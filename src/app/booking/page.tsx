@@ -26,7 +26,7 @@ export default function BookingPage() {
     return (
         <Section className="bg-gray-50 animate-fade-in">
             <SectionTitle>Book Your Session</SectionTitle>
-            <SectionSubtitle>I'm excited to hear about your vision. Fill out the form below to get started.</SectionSubtitle>
+            <SectionSubtitle>I&apos;m excited to hear about your vision. Fill out the form below to get started.</SectionSubtitle>
             
             <div className="mt-12 max-w-2xl mx-auto bg-white p-8 sm:p-12 rounded-2xl shadow-lg">
                 <form onSubmit={handleSubmit} className="space-y-6">

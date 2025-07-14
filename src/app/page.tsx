@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { ChevronLeft, ChevronRight, Star, MapPin } from 'lucide-react';
-import { portfolioImages, services, testimonials, serviceAreas } from '@/lib/data'; 
+import { portfolioImages, testimonials, serviceAreas } from '@/lib/data'; 
 import { Section, SectionTitle, SectionSubtitle } from '@/components/ui/Section';
 
 // Dynamically import the map component with SSR disabled
@@ -59,7 +59,7 @@ export default function HomePage() {
       {/* Mini Portfolio */}
       <Section className="bg-gray-50">
         <SectionTitle>My Work</SectionTitle>
-        <SectionSubtitle>A glimpse into the stories I've had the honor to tell.</SectionSubtitle>
+        <SectionSubtitle>A glimpse into the stories I&apos;ve had the honor to tell.</SectionSubtitle>
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
           {portfolioImages.slice(0, 6).map(image => (
             <div key={image.id} className="group relative overflow-hidden rounded-2xl shadow-lg">
@@ -103,7 +103,7 @@ export default function HomePage() {
           <div className="bg-white p-8 rounded-2xl shadow-md text-center flex flex-col border border-gray-100">
             <h3 className="text-xl font-semibold text-gray-900">Product & Brand</h3>
             <p className="mt-2 text-3xl font-bold text-indigo-600">Request a Quote</p>
-            <p className="mt-4 text-gray-600 flex-grow">Elevate your brand with stunning product photography. I offer both studio and on-location shoots tailored to your brand's unique aesthetic.</p>
+            <p className="mt-4 text-gray-600 flex-grow">Elevate your brand with stunning product photography. I offer both studio and on-location shoots tailored to your brand&apos;s unique aesthetic.</p>
           </div>
         </div>
       </Section>
@@ -161,7 +161,7 @@ export default function HomePage() {
                         height={80}
                         className="rounded-full ring-4 ring-white"
                       />
-                      <p className="mt-6 text-lg italic text-gray-700 flex-grow">"{testimonial.quote}"</p>
+                      <p className="mt-6 text-lg italic text-gray-700 flex-grow">&quot;{testimonial.quote}&quot;</p>
                       <div className="mt-6">
                           <p className="font-semibold text-gray-900">{testimonial.name}</p>
                           <div className="flex justify-center mt-2">

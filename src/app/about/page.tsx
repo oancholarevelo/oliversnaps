@@ -1,6 +1,5 @@
 import React from 'react';
 import Image from 'next/image';
-import { Section } from '@/components/ui/Section';
 
 export default function AboutPage() {
   return (
@@ -10,13 +9,13 @@ export default function AboutPage() {
           <div className="order-2 md:order-1 text-lg text-gray-700">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">My Story</h1>
             <p className="mt-6">
-              Hello! I'm Oliver Revelo, a passionate photographer with a love for capturing life's authentic moments. For me, it all started with a hand-me-down film camera and a trip through the beautiful landscapes of Rizal. I discovered that I wasn't just taking pictures; I was preserving stories, one frame at a time.
+              Hello! I&apos;m Oliver Revelo, a passionate photographer with a love for capturing life&apos;s authentic moments. For me, it all started with a hand-me-down film camera and a trip through the beautiful landscapes of Rizal. I discovered that I wasn&apos;t just taking pictures; I was preserving stories, one frame at a time.
             </p>
             <p className="mt-4">
               My approach is to blend into the background, capturing the genuine, unposed moments – the quiet tear during the vows, the burst of laughter between friends, the serene confidence in a portrait. I combine this documentary style with an eye for artistic composition and light to create images that are both timeless and deeply personal.
             </p>
             <p className="mt-4">
-              Based in the scenic town of Rodriguez (formerly Montalban), Rizal, I'm constantly inspired by the natural beauty and vibrant communities around me. Let's connect and create something beautiful together!
+              Based in the scenic town of Rodriguez (formerly Montalban), Rizal, I&apos;m constantly inspired by the natural beauty and vibrant communities around me. Let&apos;s connect and create something beautiful together!
             </p>
           </div>
           <div className="order-1 md:order-2">
