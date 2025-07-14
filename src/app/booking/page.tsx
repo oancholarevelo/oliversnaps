@@ -5,7 +5,7 @@ import { services } from '@/lib/data';
 import { Section, SectionTitle, SectionSubtitle } from '@/components/ui/Section';
 
 export default function BookingPage() {
-    const [formData, setFormData] = useState({ name: '', email: '', phone: '', service: services[0].name, date: '', message: '' });
+    const [formData, setFormData] = useState({ name: '', email: '', phone: '', service: services[0].name, date: '', message: '', referral: '' });
     const [formStatus, setFormStatus] = useState<'success' | null>(null);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -14,10 +14,12 @@ export default function BookingPage() {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // In a real app, you'd send this data to an API endpoint
+        // ** IMPORTANT **
+        // In a real app, you would send this data to a serverless function or a service like Formspree.
+        // For now, we'll just log it to the console.
         console.log('Booking submitted:', formData);
         setFormStatus('success');
-        setFormData({ name: '', email: '', phone: '', service: services[0].name, date: '', message: '' });
+        setFormData({ name: '', email: '', phone: '', service: services[0].name, date: '', message: '', referral: '' });
         setTimeout(() => setFormStatus(null), 5000);
     };
 
@@ -49,6 +51,10 @@ export default function BookingPage() {
                     <div>
                         <label htmlFor="message" className="block text-sm font-medium text-gray-700">Your Message</label>
                         <textarea id="message" name="message" rows={4} required value={formData.message} onChange={handleChange} placeholder="Tell me a bit about what you're looking for..." className="mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-shadow"></textarea>
+                    </div>
+                    <div>
+                        <label htmlFor="referral" className="block text-sm font-medium text-gray-700">How did you hear about me?</label>
+                        <input type="text" name="referral" id="referral" value={formData.referral} onChange={handleChange} className="mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-shadow"/>
                     </div>
                     <div className="text-right">
                         <button type="submit" className="inline-flex justify-center py-3 px-8 border border-transparent shadow-md text-base font-medium rounded-xl text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all transform hover:scale-105 active:scale-100">

@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { MapPin } from 'lucide-react';
+import { MapPin, Instagram, Facebook } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -9,10 +9,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="space-y-2">
             <h3 className="text-xl font-semibold">OliverSnaps</h3>
-            <p className="text-gray-400">Capturing life's moments, one frame at a time.</p>
+            <p className="text-gray-400">Timeless stories, captured with artistry.</p>
             <div className="flex items-center text-gray-400">
                <MapPin className="h-5 w-5 mr-2" />
-               <span>Taguig City, Philippines</span>
+               <span>Rodriguez, Rizal, Philippines</span>
             </div>
           </div>
           <div>
@@ -26,7 +26,15 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold">Connect</h3>
             <p className="mt-4 text-gray-400">Follow my work on social media.</p>
-             {/* Add social links here */}
+             <div className="flex mt-4 space-x-4">
+                <a href="https://www.instagram.com/olidgaf_" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                  <Instagram className="h-6 w-6" />
+                </a>
+                <a href="https://www.facebook.com/oliverevelo" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                  <Facebook className="h-6 w-6" />
+                </a>
+                {/* Add other social links here */}
+             </div>
           </div>
         </div>
         <div className="mt-8 border-t border-gray-800 pt-8 text-center text-gray-400">
