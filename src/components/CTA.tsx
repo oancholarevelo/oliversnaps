@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function CTA() {
   return (
     // This outer container adds the horizontal and bottom margins
-    <div className="px-4 sm:px-6 md:px-8 pb-12 md:pb-16">
+    <div className="px-4 sm:px-6 md:px-8 pb-12 md:pb-16 bg-white dark:bg-gray-900">
       {/* I've reduced the border-radius from 3xl to 2xl */}
       <div className="relative bg-indigo-700 rounded-2xl">
         {/* I've adjusted the max-width and padding to give the text more space */}

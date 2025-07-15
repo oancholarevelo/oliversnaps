@@ -33,7 +33,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white/90 backdrop-blur-lg sticky top-0 z-40 w-full border-b border-gray-200">
+    <header className="bg-white backdrop-blur-lg sticky top-0 z-40 w-full border-b border-gray-200 dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Desktop Header Layout */}
         <div className="hidden md:grid md:grid-cols-3 md:items-center md:h-20">
