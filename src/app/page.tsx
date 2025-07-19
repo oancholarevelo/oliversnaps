@@ -5,7 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { ChevronLeft, ChevronRight, Star, MapPin } from 'lucide-react';
-import { portfolioImages, testimonials, serviceAreas } from '@/lib/data'; 
+import { portfolioImages, testimonials, serviceAreas } from '@/lib/data';
+import heroImage from '@/images/DSCF3596.webp';
 import { Section, SectionTitle, SectionSubtitle } from '@/components/ui/Section';
 
 // Dynamically import the map component with SSR disabled
@@ -39,8 +40,8 @@ export default function HomePage() {
       <section className="w-full p-4 sm:p-6 md:p-8 bg-white" style={{ height: 'calc(100vh - 5rem)' }}>
         <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center text-center text-white">
           <Image
-            src="https://placehold.co/1600x900/4338ca/ffffff?text=Your+Best+Shot"
-            alt="A stunning wedding photograph taken in Rizal by OliverSnaps"
+            src={heroImage}
+            alt="A stunning picture from Binondo Bridge photograph taken in Rizal by OliverSnaps"
             className="absolute inset-0 w-full h-full object-cover"
             fill
             priority
