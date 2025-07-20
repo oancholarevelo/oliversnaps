@@ -75,9 +75,3 @@ export const testimonials: Testimonial[] = [
   { name: "Creative Minds Inc.", quote: "Professional, efficient, and delivered outstanding photos for our corporate event. Highly recommended!", rating: 5, avatar: "https://placehold.co/100x100/d1fae5/065f46?text=CM" },
   { name: "Jessica L.", quote: "An amazing experience from start to finish. Made me feel so comfortable during the portrait session, and the results were stunning.", rating: 5, avatar: "https://placehold.co/100x100/fef3c7/92400e?text=JL" },
 ];
-
-export const services: Service[] = [
-  { name: "Portrait Session", price: "Starts at ₱8,000", description: "1-2 hour session in Rodriguez, Rizal, and nearby areas. Includes 20 edited photos and an online gallery." },
-  { name: "Event Photography", price: "Starts at ₱10,000", description: "Event coverage in Montalban, Rizal. Minimum 2 hours, with 50+ photos per hour." },
-  { name: "Product Shots", price: "Request a Quote", description: "Studio or on-location product photography for your brand, based in Rodriguez, Rizal." },
-];

@@ -34,7 +34,7 @@ export default function PortfolioPage() {
             <SectionTitle>My Portfolio</SectionTitle>
             <SectionSubtitle>A collection of my work. Click on a category to see the full set.</SectionSubtitle>
 
-            <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-12 max-w-3xl mx-auto grid gap-8 sm:grid-cols-2">
                 {categoryGalleries.map((gallery) => (
                     <Link
                         href={`/portfolio/${gallery.name}`}

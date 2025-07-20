@@ -14,7 +14,7 @@ export default function CTA() {
             <span className="block">Ready to tell your story?</span>
           </h2>
           <p className="mt-4 text-lg leading-6 text-indigo-200">
-            Let&apos;s create beautiful, timeless photographs together. I&apos;m excited to hear your vision.
+            Let&apos;s create timeless images that feel truly you. I&apos;m excited to help bring your vision to life.
           </p>
           <Link
             href="/booking"

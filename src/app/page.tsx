@@ -33,13 +33,23 @@ export default function HomePage() {
     return () => clearInterval(timer);
   }, []);
 
+  // --- NEW LOGIC FOR MINI PORTFOLIO ---
+  // 1. Filter and slice 3 images from each category
+  const landscapeImages = portfolioImages.filter(img => img.category === 'landscape').slice(0, 3);
+  const portraitImages = portfolioImages.filter(img => img.category === 'portrait').slice(0, 3);
+
+  // 2. Combine them into a new array for the gallery
+  const miniPortfolioImages = [...landscapeImages, ...portraitImages];
+  // --- END OF NEW LOGIC ---
+
+
   return (
     <div className="animate-fade-in">
       {/* Hero Section */}
       <section className="w-full p-4 sm:p-6 md:p-8 bg-white" style={{ height: 'calc(100vh - 5rem)' }}>
         <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center text-center text-white">
           <Image
-            src="/images/hero.webp"
+            src="/hero.webp"
             alt="A stunning picture from Binondo Bridge photograph taken in Rizal by OliverSnaps"
             className="absolute inset-0 w-full h-full object-cover"
             fill
@@ -57,11 +67,12 @@ export default function HomePage() {
       </section>
 
       {/* Mini Portfolio */}
-      <Section className="bg-gray-50">
-        <SectionTitle>My Work</SectionTitle>
-        <SectionSubtitle>A glimpse into the stories I&apos;ve had the honor to tell.</SectionSubtitle>
+      <Section className="bg-white">
+        <SectionTitle>Visual Stories</SectionTitle>
+        <SectionSubtitle>Every photo tells a story. Explore moments of joy, beauty, and connection.</SectionSubtitle>
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
-          {portfolioImages.slice(0, 6).map(image => (
+          {/* Use the new curated array here */}
+          {miniPortfolioImages.map(image => (
             <div key={image.id} className="group relative overflow-hidden rounded-2xl shadow-lg">
               <Image
                 src={image.src}
@@ -78,28 +89,6 @@ export default function HomePage() {
         </div>
         <div className="mt-12 text-center">
           <Link href="/portfolio" className="px-8 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-gray-800 hover:bg-gray-700">View Full Portfolio</Link>
-        </div>
-      </Section>
-
-      {/* Services Section */}
-      <Section className="bg-white">
-        <SectionTitle>Services & Pricing</SectionTitle>
-        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          <div className="bg-white p-8 rounded-2xl shadow-md text-center flex flex-col border border-gray-100">
-            <h3 className="text-xl font-semibold text-gray-900">Portrait Session</h3>
-            <p className="mt-2 text-3xl font-bold text-indigo-600">Starts at ₱8,000</p>
-            <p className="mt-4 text-gray-600 flex-grow">A 1-2 hour session perfect for individuals, couples, or families. Includes 20 professionally edited, high-resolution photos delivered in a private online gallery.</p>
-          </div>
-          <div className="bg-white p-8 rounded-2xl shadow-md text-center flex flex-col border border-gray-100">
-            <h3 className="text-xl font-semibold text-gray-900">Event Photography</h3>
-            <p className="mt-2 text-3xl font-bold text-indigo-600">Starts at ₱10,000</p>
-            <p className="mt-4 text-gray-600 flex-grow">Professional coverage for corporate functions, debuts, birthdays, and other special occasions. Includes a minimum of 2 hours and 50+ high-quality photos per hour.</p>
-          </div>
-          <div className="bg-white p-8 rounded-2xl shadow-md text-center flex flex-col border border-gray-100">
-            <h3 className="text-xl font-semibold text-gray-900">Product & Brand</h3>
-            <p className="mt-2 text-3xl font-bold text-indigo-600">Request a Quote</p>
-            <p className="mt-4 text-gray-600 flex-grow">Elevate your brand with stunning product photography. I offer both studio and on-location shoots tailored to your brand&apos;s unique aesthetic.</p>
-          </div>
         </div>
       </Section>
 

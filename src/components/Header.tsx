@@ -4,7 +4,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Camera, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import Image from 'next/image'; // <-- Import the Image component
 
 const navLinks = [
   { name: 'Home', href: '/' },
@@ -41,8 +42,14 @@ export default function Header() {
           {/* Left: Logo */}
           <div className="justify-self-start">
             <Link href="/" className="flex-shrink-0 flex items-center gap-2 group">
-              <Camera className="h-8 w-8 text-indigo-600 group-hover:animate-pulse" />
-              <span className="text-2xl font-bold text-gray-900 tracking-tight">OliverSnaps</span>
+              {/* --- LOGO CHANGE HERE (Desktop) --- */}
+              <Image 
+                src="/logo.webp" 
+                alt="OliverSnaps Logo"
+                width={96} // Adjust width as needed
+                height={32}  // Adjust height as needed
+                priority
+              />
             </Link>
           </div>
 
@@ -64,8 +71,14 @@ export default function Header() {
         {/* Mobile Header Layout */}
         <div className="md:hidden flex items-center justify-between h-20">
            <Link href="/" className="flex-shrink-0 flex items-center gap-2 group">
-            <Camera className="h-8 w-8 text-indigo-600" />
-            <span className="text-2xl font-bold text-gray-900 tracking-tight">OliverSnaps</span>
+              {/* --- LOGO CHANGE HERE (Mobile) --- */}
+              <Image 
+                src="/images/logo.webp" 
+                alt="OliverSnaps Logo"
+                width={140} // Adjust width as needed
+                height={35}  // Adjust height as needed
+                priority
+              />
           </Link>
           <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="inline-flex items-center justify-center p-2 rounded-xl text-gray-500 hover:text-indigo-600 hover:bg-gray-100">
             {isMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}

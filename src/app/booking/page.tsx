@@ -1,8 +1,15 @@
 'use client';
 
 import React, { useState } from 'react';
-import { services } from '@/lib/data';
 import { Section, SectionTitle, SectionSubtitle } from '@/components/ui/Section';
+
+// Define available services
+const services = [
+    { name: 'Portrait Session' },
+    { name: 'Event Photography' },
+    { name: 'Product Shoot' },
+    { name: 'Other' }
+];
 
 export default function BookingPage() {
     const [formData, setFormData] = useState({ name: '', email: '', phone: '', service: services[0].name, date: '', message: '', referral: '' });
@@ -19,7 +26,7 @@ export default function BookingPage() {
         // For now, we'll just log it to the console.
         console.log('Booking submitted:', formData);
         setFormStatus('success');
-        setFormData({ name: '', email: '', phone: '', service: services[0].name, date: '', message: '', referral: '' });
+        setFormData({ name: '', email: '', phone: '', service: '', date: '', message: '', referral: '' });
         setTimeout(() => setFormStatus(null), 5000);
     };
 

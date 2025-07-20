@@ -1,6 +1,8 @@
+// src/components/Footer.tsx
 import React from 'react';
 import Link from 'next/link';
 import { MapPin, Instagram, Facebook } from 'lucide-react';
+import Image from 'next/image'; // <-- Import the Image component
 
 export default function Footer() {
   return (
@@ -9,7 +11,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 md:gap-8">
           {/* Column 1: Brand Info (Full width on mobile) */}
           <div className="mb-10 md:mb-0 space-y-4">
-            <h3 className="text-xl font-semibold text-gray-900">OliverSnaps</h3>
+            {/* --- LOGO CHANGE HERE (Footer) --- */}
+            <Link href="/">
+              <Image 
+                src="/logo.webp" 
+                alt="OliverSnaps Logo"
+                width={120} // Adjust width as needed
+                height={36}  // Adjust height as needed
+              />
+            </Link>
             <p className="text-gray-600">Timeless stories, captured with artistry.</p>
             <div className="flex items-center text-gray-600">
                <MapPin className="h-5 w-5 mr-2 flex-shrink-0" />
