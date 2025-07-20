@@ -6,13 +6,12 @@ import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { ChevronLeft, ChevronRight, Star, MapPin } from 'lucide-react';
 import { portfolioImages, testimonials, serviceAreas } from '@/lib/data';
-import heroImage from '@/images/DSCF3596.webp';
 import { Section, SectionTitle, SectionSubtitle } from '@/components/ui/Section';
 
 // Dynamically import the map component with SSR disabled
 const InteractiveMap = dynamic(() => import('@/components/InteractiveMap').then(mod => mod.InteractiveMap), {
   ssr: false,
-  loading: () => <div className="bg-gray-200 w-full h-full animate-pulse" /> 
+  loading: () => <div className="bg-gray-200 w-full h-full animate-pulse" />
 });
 
 
@@ -40,7 +39,7 @@ export default function HomePage() {
       <section className="w-full p-4 sm:p-6 md:p-8 bg-white" style={{ height: 'calc(100vh - 5rem)' }}>
         <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center text-center text-white">
           <Image
-            src={heroImage}
+            src="/images/hero.webp"
             alt="A stunning picture from Binondo Bridge photograph taken in Rizal by OliverSnaps"
             className="absolute inset-0 w-full h-full object-cover"
             fill
@@ -49,7 +48,7 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-black/50"></div>
           <div className="relative z-10 p-4">
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">Your Story, in Focus.</h1>
-            <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-gray-200">Wedding, Portrait, and Event Photography in Rodriguez (Montalban), Rizal and beyond.</p>
+            <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-gray-200">Portrait, and Event Photography in Rodriguez (Montalban), Rizal and beyond.</p>
             <Link href="/booking" className="mt-8 inline-block px-8 py-4 bg-indigo-600 text-white font-semibold rounded-xl shadow-lg hover:bg-indigo-500 transition-all transform hover:scale-105 active:scale-100">
               Book Your Session
             </Link>
@@ -92,11 +91,6 @@ export default function HomePage() {
             <p className="mt-4 text-gray-600 flex-grow">A 1-2 hour session perfect for individuals, couples, or families. Includes 20 professionally edited, high-resolution photos delivered in a private online gallery.</p>
           </div>
           <div className="bg-white p-8 rounded-2xl shadow-md text-center flex flex-col border border-gray-100">
-            <h3 className="text-xl font-semibold text-gray-900">Wedding Package</h3>
-            <p className="mt-2 text-3xl font-bold text-indigo-600">Starts at ₱45,000</p>
-            <p className="mt-4 text-gray-600 flex-grow">Full-day coverage to capture every moment of your special day. Includes 8 hours of photography, over 400 edited images, and a complimentary prenup session.</p>
-          </div>
-          <div className="bg-white p-8 rounded-2xl shadow-md text-center flex flex-col border border-gray-100">
             <h3 className="text-xl font-semibold text-gray-900">Event Photography</h3>
             <p className="mt-2 text-3xl font-bold text-indigo-600">Starts at ₱10,000</p>
             <p className="mt-4 text-gray-600 flex-grow">Professional coverage for corporate functions, debuts, birthdays, and other special occasions. Includes a minimum of 2 hours and 50+ high-quality photos per hour.</p>
@@ -124,8 +118,8 @@ export default function HomePage() {
             </p>
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
               {serviceAreas && serviceAreas.map((area) => (
-                <div 
-                  key={area.name} 
+                <div
+                  key={area.name}
                   className="bg-white p-4 rounded-xl shadow-md flex items-start space-x-4 transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1"
                 >
                   <div className="flex-shrink-0">
@@ -141,15 +135,15 @@ export default function HomePage() {
           </div>
         </div>
       </Section>
-      
+
       {/* Enhanced Testimonials Carousel Section */}
       <Section className="bg-white">
         <SectionTitle>What My Clients Say</SectionTitle>
         <SectionSubtitle>Real stories from happy clients.</SectionSubtitle>
         <div className="relative mt-12 max-w-2xl mx-auto">
           <div className="overflow-hidden">
-            <div 
-                className="flex transition-transform duration-500 ease-in-out" 
+            <div
+                className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
             >
               {testimonials.map((testimonial, index) => (
@@ -174,15 +168,15 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-          <button 
-              onClick={prevTestimonial} 
+          <button
+              onClick={prevTestimonial}
               className="absolute top-1/2 -left-3 md:-left-12 -translate-y-1/2 p-2 rounded-full bg-white/60 hover:bg-white transition-colors shadow-md z-10"
               aria-label="Previous testimonial"
           >
             <ChevronLeft className="h-6 w-6 text-gray-600" />
           </button>
-          <button 
-              onClick={nextTestimonial} 
+          <button
+              onClick={nextTestimonial}
               className="absolute top-1/2 -right-3 md:-right-12 -translate-y-1/2 p-2 rounded-full bg-white/60 hover:bg-white transition-colors shadow-md z-10"
               aria-label="Next testimonial"
           >
