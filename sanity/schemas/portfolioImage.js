@@ -1,24 +1,30 @@
-// sanity/schemas/portfolioImage.js
 export default {
   name: 'portfolioImage',
   title: 'Portfolio Image',
   type: 'document',
   fields: [
-    { name: 'title', title: 'Title', type: 'string' },
-    { name: 'captureDate', title: 'Capture Date', type: 'date' },
-    { name: 'image', title: 'Image', type: 'image', options: { hotspot: true } },
+    {
+      name: 'imageUrl',
+      title: 'Image',
+      type: 'image',
+      options: {
+        hotspot: true, // This helps with cropping in Sanity
+      },
+      validation: (Rule) => Rule.required(),
+    },
     {
       name: 'category',
       title: 'Category',
       type: 'string',
+      description: 'Select a category for the image.',
       options: {
         list: [
-          { title: 'Portrait', value: 'portrait' },
-          { title: 'Landscape', value: 'landscape' },
+          { title: 'Portraits', value: 'portraits' },
+          { title: 'Landscapes', value: 'landscapes' },
         ],
         layout: 'radio',
       },
-      validation: Rule => Rule.required(),
+      validation: (Rule) => Rule.required(),
     },
   ],
-};
+}

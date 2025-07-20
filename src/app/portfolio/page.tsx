@@ -1,74 +1,75 @@
-'use client';
+import { client } from '../../../sanity/lib/client'
+import { urlFor } from '../../../sanity/lib/image'
+import Image from 'next/image'
+import type { Image as SanityImage } from 'sanity'
 
-import React, { useState } from 'react';
-import { portfolioImages } from '@/lib/data';
-import { Section, SectionTitle, SectionSubtitle } from '@/components/ui/Section';
-import Image from 'next/image';
-import { WeeklyGalleryModal } from '@/components/WeeklyGalleryModal'; // Import the new component
-import { PortfolioImage } from '@/lib/data';
+// A simplified type for our portfolio images (no caption)
+interface PortfolioImage {
+  _id: string
+  imageUrl: SanityImage
+}
 
-// Helper function to group images by week
-const groupImagesByWeek = (images: PortfolioImage[]) => {
-    const groups: { [key: string]: PortfolioImage[] } = {};
+// Helper function to fetch images from Sanity for a specific category
+async function getPortfolioImages(category: string): Promise<PortfolioImage[]> {
+  const query = `*[_type == "portfolioImage" && category == "${category}"]`
+  const data = await client.fetch(query)
+  return data
+}
 
-    // Sort images by date descending to process them chronologically
-    const sortedImages = [...images].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+export default async function Portfolio() {
+  // Fetch images for both categories
+  const [portraitImages, landscapeImages] = await Promise.all([
+    getPortfolioImages('portraits'),
+    getPortfolioImages('landscapes'),
+  ])
 
-    sortedImages.forEach(image => {
-        const date = new Date(image.date);
-        const year = date.getFullYear();
-        // Get the week number (0-51)
-        const firstDayOfYear = new Date(year, 0, 1);
-        const pastDaysOfYear = (date.getTime() - firstDayOfYear.getTime()) / 86400000;
-        const weekNumber = Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
-        
-        const key = `${year}-W${weekNumber}`;
-        if (!groups[key]) {
-            groups[key] = [];
-        }
-        groups[key].push(image);
-    });
+  return (
+    <div className="container mx-auto px-4">
+      <h1 className="text-4xl font-bold my-8 text-center">Portfolio</h1>
 
-    return Object.entries(groups);
-};
+      {/* Portraits Section */}
+      <section id="portraits" className="mb-16">
+        <h2 className="text-3xl font-bold mt-12 mb-6">Portraits</h2>
+        {portraitImages.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {portraitImages.map((image) => (
+              <div key={image._id} className="overflow-hidden rounded-lg">
+                <Image
+                  src={urlFor(image.imageUrl).width(800).url()}
+                  alt="Portrait image from portfolio" // Generic alt text
+                  width={500}
+                  height={500}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p>No portrait images have been uploaded yet.</p>
+        )}
+      </section>
 
-
-export default function PortfolioPage() {
-    const [selectedWeek, setSelectedWeek] = useState<PortfolioImage[] | null>(null);
-
-    const weeklyGalleries = groupImagesByWeek(portfolioImages);
-
-    return (
-        <>
-            <Section className="bg-white animate-fade-in">
-                <SectionTitle>My Portfolio</SectionTitle>
-                <SectionSubtitle>A collection of my work, week by week. Click on any week to see the full set.</SectionSubtitle>
-                
-                <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                    {weeklyGalleries.map(([weekKey, images]) => (
-                        <div 
-                            key={weekKey} 
-                            className="group relative overflow-hidden rounded-2xl shadow-lg aspect-w-3 aspect-h-4 cursor-pointer"
-                            onClick={() => setSelectedWeek(images)}
-                        >
-                            <Image 
-                              src={images[0].src} // Use the first image as the cover
-                              alt={`Cover for ${weekKey}`}
-                              className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                              width={600}
-                              height={800}
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
-                                <h3 className="text-white text-xl font-semibold">{images[0].title} & more...</h3>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </Section>
-
-            {selectedWeek && (
-                <WeeklyGalleryModal images={selectedWeek} onClose={() => setSelectedWeek(null)} />
-            )}
-        </>
-    );
-};
+      {/* Landscapes Section */}
+      <section id="landscapes">
+        <h2 className="text-3xl font-bold mt-12 mb-6">Landscapes</h2>
+        {landscapeImages.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {landscapeImages.map((image) => (
+              <div key={image._id} className="overflow-hidden rounded-lg">
+                <Image
+                  src={urlFor(image.imageUrl).width(800).url()}
+                  alt="Landscape image from portfolio" // Generic alt text
+                  width={500}
+                  height={500}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p>No landscape images have been uploaded yet.</p>
+        )}
+      </section>
+    </div>
+  )
+}
