@@ -2,11 +2,9 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { portfolioImages } from '@/lib/data';
 import { Section, SectionTitle, SectionSubtitle } from '@/components/ui/Section';
-import { ArrowLeft } from 'lucide-react';
 
 // Import the lightbox component and its styles
 import Lightbox from "yet-another-react-lightbox";
